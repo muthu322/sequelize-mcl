@@ -9,12 +9,12 @@ module.exports = {
   teaser() {
     const versions = [
       'Node: ' + helpers.version.getNodeVersion(),
-      'MLI(CLI): ' + helpers.version.getCliVersion(),
+      'MCL(CLI): ' + helpers.version.getCliVersion(),
       'ORM: ' + helpers.version.getOrmVersion(),
     ];
 
     this.log();
-    this.log(clc.underline('Sequelize CLI [' + versions.join(', ') + ']'));
+    this.log(clc.underline('Sequelize MCL [' + versions.join(', ') + ']'));
     this.log();
   },
 

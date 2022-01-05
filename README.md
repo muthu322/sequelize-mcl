@@ -1,7 +1,6 @@
-# sequelize/mli
+# sequelize/mcl
 
 Run your Migrations step by step and with specified migration up & down
-
 
 The [Sequelize](https://sequelize.org) Command Line Interface (CLI)
 
@@ -14,19 +13,19 @@ Based on umzug latest version 3
 Make sure you have [Sequelize](https://sequelize.org) installed. Then install the Sequelize CLI to be used in your project with
 
 ```bash
-npm install --save-dev sequelize-mli
+npm install --save-dev sequelize-mcl
 ```
 
 And then you should be able to run the CLI with
 
 ```bash
-npx sequelize-mli --help
+npx sequelize-mcl --help
 ```
 
 ### Usage
 
 ```bash
-Sequelize CLI [Node: 10.21.0, CLI: 6.0.0, ORM: 6.1.0]
+Sequelize-mcl CLI [Node: 10.21.0, CLI: 6.0.0, ORM: 6.1.0]
 
 sequelize <command>
 
