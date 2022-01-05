@@ -1,5 +1,8 @@
 # sequelize/mli
 
+Run your Migrations step by step and with specified migration up & down
+
+
 The [Sequelize](https://sequelize.org) Command Line Interface (CLI)
 
 Derived from sequelize-cli package
