@@ -18,6 +18,10 @@ exports.builder = (yargs) =>
       describe: 'Number of Migration step to run until',
       type: 'string',
     })
+    .option('rerun', {
+      describe: 'Rerun Migration',
+      type: 'string',
+    })
     .option('name', {
       describe: 'Run specific Migration File',
       type: 'string',
@@ -66,9 +70,11 @@ function migrate(args) {
           }
           if (args.name) {
             options.migrations = [args.name];
+            options.rerun = 'ALLOW';
           }
           if (args.migrations) {
             options.migrations = args.migrations;
+            options.rerun = 'ALLOW';
           }
           if (args.to) {
             if (
@@ -83,6 +89,10 @@ function migrate(args) {
             options.to = args.to;
           }
 
+          if (args.rerun) {
+            options.rerun = args.rerun;
+          }
+
           return options;
         })
         .then((options) => {
@@ -95,18 +105,26 @@ function migrate(args) {
 function migrationStatus(args) {
   return getMigrator('migration', args)
     .then((migrator) => {
+      let upStep = 0;
+      let downStep = 0;
       return ensureCurrentMetaSchema(migrator)
         .then(() => migrator.executed())
         .then((migrations) => {
           _.forEach(migrations, (migration) => {
             helpers.view.log('up', migration.name);
+            ++upStep;
           });
         })
         .then(() => migrator.pending())
         .then((migrations) => {
           _.forEach(migrations, (migration) => {
             helpers.view.log('down', migration.name);
+            ++downStep;
           });
+        })
+        .then(() => {
+          helpers.view.log('Total Up steps:', upStep);
+          helpers.view.log('Total Down steps', downStep);
         });
     })
     .catch((e) => helpers.view.error(e));

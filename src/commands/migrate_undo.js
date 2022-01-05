@@ -17,6 +17,10 @@ exports.builder = (yargs) =>
       describe: 'Step of migrations to undo',
       type: 'number',
     })
+    .option('rerun', {
+      describe: 'Rerun Migration',
+      type: 'string',
+    })
     .option('to', {
       describe: 'Undo migrations upto',
       type: 'string',
@@ -44,9 +48,11 @@ function migrateUndo(args) {
           }
           if (args.name) {
             options.migrations = [args.name];
+            options.rerun = 'ALLOW';
           }
           if (args.migrations) {
             options.migrations = args.migrations;
+            options.rerun = 'ALLOW';
           }
           if (args.step) {
             options.step = parseInt(args.step);
@@ -54,6 +60,10 @@ function migrateUndo(args) {
           if (args.to) {
             options.to = args.to;
           }
+          if (args.rerun) {
+            options.rerun = args.rerun;
+          }
+
           return options;
         })
         .then((options) => {

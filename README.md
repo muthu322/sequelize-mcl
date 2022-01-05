@@ -1,4 +1,4 @@
-# sequelize/mli 
+# sequelize/mli
 
 The [Sequelize](https://sequelize.org) Command Line Interface (CLI)
 
@@ -30,11 +30,11 @@ sequelize <command>
 Commands:
   sequelize db:migrate                        Run pending migrations
   sequelize db:migrate --step=N               Run N number of pending migrations
-  sequelize db:migrate --name="migration.js"  Run specific migration file .js
+  sequelize db:migrate --name=migration.js  Run specific migration file .js
   sequelize db:migrate --migrations["migration1.js","migration2"]  Run array of migration files
   sequelize db:migrate:undo                   Reverts a migration
   sequelize db:migrate:undo --step=N          Reverts N number of migrations
-  sequelize db:migrate:undo --name="migration.js"  Reverts specific migration file .js
+  sequelize db:migrate:undo --name=migration.js  Reverts specific migration file .js
   sequelize db:migrate:undo --migrations["migration1.js","migration2"]  Reverts array of migration file .js
   sequelize db:migrate:undo:all               Revert all migrations ran
   sequelize db:migrate:status                 List the status of all migrations

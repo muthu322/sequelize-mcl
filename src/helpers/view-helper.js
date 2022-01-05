@@ -9,7 +9,7 @@ module.exports = {
   teaser() {
     const versions = [
       'Node: ' + helpers.version.getNodeVersion(),
-      'CLI: ' + helpers.version.getCliVersion(),
+      'MLI(CLI): ' + helpers.version.getCliVersion(),
       'ORM: ' + helpers.version.getOrmVersion(),
     ];
 

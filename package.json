@@ -1,7 +1,7 @@
 {
   "name": "sequelize-mcl",
   "version": "1.0.0",
-  "description": "The Sequelize CLI",
+  "description": "The Sequelize MCLI",
   "bin": {
     "sequelize-mcl": "./lib/sequelize"
   },
