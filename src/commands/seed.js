@@ -25,6 +25,7 @@ exports.handler = async function (args) {
 };
 
 function seedAll(args) {
+  console.log('seed all runs');
   return getMigrator('seeder', args)
     .then((migrator) => {
       return migrator.pending().then((seeders) => {
@@ -42,6 +43,7 @@ function seedAll(args) {
 }
 
 function seedUndoAll(args) {
+  console.log('undo seed all runs');
   return getMigrator('seeder', args)
     .then((migrator) => {
       return (

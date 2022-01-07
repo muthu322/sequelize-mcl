@@ -20,15 +20,16 @@ exports.handler = async function (args) {
   switch (command) {
     case 'db:seed':
       try {
+        console.log('seed one runs');
+        console.log(args);
         const migrator = await getMigrator('seeder', args);
-
         // filter out cmd names
         // for case like --seeders-path seeders --seed seedPerson.js db:seed
         const seeds = (args.seed || [])
           .filter((name) => name !== 'db:seed' && name !== 'db:seed:undo')
           .map((file) => path.basename(file));
 
-        await migrator.up(seeds);
+        await migrator.up({ migrations: seeds, rerun: 'ALLOW' });
       } catch (e) {
         helpers.view.error(e);
       }
@@ -36,6 +37,7 @@ exports.handler = async function (args) {
 
     case 'db:seed:undo':
       try {
+        console.log('seed Undo one runs');
         const migrator = await getMigrator('seeder', args);
         let seeders =
           helpers.umzug.getStorage('seeder') === 'none'

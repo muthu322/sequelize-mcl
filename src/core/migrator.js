@@ -38,6 +38,7 @@ export async function getMigrator(type, args) {
   }
 
   const sequelize = getSequelizeInstance();
+  console.log(helpers.path.getPath(type) + '/*.js');
   const migrator = new Umzug({
     storage: new SequelizeStorage({ sequelize }),
     // storage: helpers.umzug.getStorage(type),
